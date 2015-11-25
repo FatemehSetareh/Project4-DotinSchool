@@ -1,0 +1,23 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="exp">
+    <output-path>$PROJECT_DIR$/exoloded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="Project4-DotinSchool/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="Project4-DotinSchool" />
+          <element id="file-copy" path="$PROJECT_DIR$/src/main/java/webapp/WEB-INF/hibernate.cfg.xml" />
+          <element id="file-copy" path="$PROJECT_DIR$/src/main/java/mapping.hbm.xml" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="hibernate-annotations:hibernate-annotations:3.3.0.GA" />
+          <element id="library" level="project" name="mysql:mysql-connector-java:5.1.20" />
+          <element id="library" level="project" name="org.hibernate:hibernate-commons-annotations:3.0.0.ga" />
+          <element id="library" level="project" name="org.hibernate:hibernate:3.2.1.ga" />
+          <element id="library" level="project" name="org.hibernate:hibernate-core:3.3.0.GA" />
+        </element>
+      </element>
+      <element id="dir-copy" path="$PROJECT_DIR$/src/main/java/webapp/WEB-INF/pages" />
+    </root>
+  </artifact>
+</component>

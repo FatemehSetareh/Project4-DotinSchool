@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="hibernate-annotations:hibernate-annotations:3.3.0.GA" type="repository">
+    <properties maven-id="hibernate-annotations:hibernate-annotations:3.3.0.GA" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/hibernate-annotations-3.3.0.GA.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

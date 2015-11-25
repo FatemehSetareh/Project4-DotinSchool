@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" hash="3625313472">
+    <data-source source="LOCAL" name="hibernate.cfg.xml" uuid="234d5804-c990-4cdc-96f4-5a50340a6cc6">
+      <driver-ref>mysql</driver-ref>
+      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost/bank</jdbc-url>
+      <user-name>root</user-name>
+      <user-password>dfd8dfc5dfc5dfde</user-password>
+      <libraries>
+        <library>
+          <url>file://C:\Users\DOTIN SCHOOL 4\Desktop\FatemehSetareh\Project4-DotinSchool\lib\mysql-connector-java-5.1.20.jar</url>
+        </library>
+      </libraries>
+    </data-source>
+    <data-source source="LOCAL" name="webapp:WEB-INF:hibernate.cfg.xml" uuid="75bf5322-7c22-43db-b080-f7c8f0bbd35b">
+      <driver-ref>mysql</driver-ref>
+      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost/bank</jdbc-url>
+      <user-name>root</user-name>
+      <user-password>dfd8dfc5dfc5dfde</user-password>
+      <libraries>
+        <library>
+          <url>file://C:\Users\DOTIN SCHOOL 4\Desktop\FatemehSetareh\Project4-DotinSchool\lib\mysql-connector-java-5.1.20.jar</url>
+        </library>
+      </libraries>
+    </data-source>
+  </component>
+</project>
+

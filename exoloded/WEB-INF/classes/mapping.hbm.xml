@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="business.LoanType" table="loantype">
+        <id name="typeName" type="string" column="typeName">
+        </id>
+        <property name="interestRate" column="interestRate" type="string"/>
+            <!--<bag name="grantConditions" cascade="all">-->
+                <!--<key column="typeName"/>-->
+                <!--<one-to-many class="business.GrantCondition"/>-->
+        <!--</bag>-->
+        <set name="grantConditions" cascade="all">
+            <key column="typeName"/>
+            <one-to-many class="business.GrantCondition"/>
+        </set>
+
+    </class>
+
+    <class name="business.GrantCondition" table="grantcondition">
+        <id name="grantConditionId" type="int" column="grantConditionId">
+            <generator class="native"/>
+        </id>
+        <property name="typeName" column="typeName" type="string"/>
+        <property name="minDuration" column="minDuration" type="string"/>
+        <property name="maxDuration" column="maxDuration" type="string"/>
+        <property name="minAmount" column="minAmount" type="string"/>
+        <property name="maxAmount" column="maxAmount" type="string"/>
+    </class>
+
+    <class name="business.LoanFile" table="loanfile">
+        <id name="loanFileId" type="int" column="loanFileId">
+            <generator class="native"/>
+        </id>
+        <property name="customerNumber" column="customerNumber" type="int"/>
+        <property name="typeName" column="typeName" type="string"/>
+        <property name="duration" column="duration" type="string"/>
+        <property name="amount" column="amount" type="string"/>
+    </class>
+</hibernate-mapping>
