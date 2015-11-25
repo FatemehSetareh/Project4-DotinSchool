@@ -24,6 +24,7 @@
             <generator class="native"/>
         </id>
         <property name="typeName" column="typeName" type="string"/>
+        <property name="conditionName" column="conditionName" type="string"/>
         <property name="minDuration" column="minDuration" type="string"/>
         <property name="maxDuration" column="maxDuration" type="string"/>
         <property name="minAmount" column="minAmount" type="string"/>

@@ -19,7 +19,7 @@
 
 <p>Add A New Loan Type</p>
 
-<form action="DefineNewLoanTypeServlet" method="get">
+<form action="DefineNewLoanTypeServlet" method="post">
     <input type="text" value="Type Name" name="typeName" onfocus="if(this.value == 'Type Name') { this.value = ''; }">
     <br>
     <input type="text" value="Interest Rate" name="interestRate"

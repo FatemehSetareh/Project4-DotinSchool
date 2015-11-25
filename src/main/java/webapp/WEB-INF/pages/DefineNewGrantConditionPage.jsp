@@ -1,5 +1,3 @@
-<%@ page import="business.Logic" %>
-
 <%--
   Created by IntelliJ IDEA.
   User: DOTIN SCHOOL 4
@@ -11,7 +9,43 @@
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="Theme.css" media="screen"/>
-    <title></title>
+    <script>
+        var grantConditions = [];
+        grantConditions.push(["conditionName", "minDuration", "maxDuration" , "minAmount", "maxAmount"]);
+
+        function generateTable() {
+            var conditionName = document.getElementById("conditionName").value;
+            var minDuration = document.getElementById("minDuration").value;
+            var maxDuration = document.getElementById("maxDuration").value;
+            var minAmount = document.getElementById("minAmount").value;
+            var maxAmount = document.getElementById("maxAmount").value;
+            grantConditions.push([conditionName, minDuration, maxDuration , minAmount, maxAmount]);
+            var table = document.createElement("TABLE");
+            table.border = "2";
+
+            var columnCount = 5;
+            var row = table.insertRow(-1);
+            for (var i = 0; i < columnCount; i++) {
+                var headerCell = document.createElement("TH");
+                headerCell.innerHTML = grantConditions[0][i];
+                row.appendChild(headerCell);
+            }
+            for (var i = 1; i < grantConditions.length; i++) {
+                row = table.insertRow(-1);
+                for (var j = 0; j < columnCount; j++) {
+                    var cell = row.insertCell(-1);
+                    cell.innerHTML = grantConditions[i][j];
+                }
+                alert(grantConditions[i]);
+            }
+            var dvTable = document.getElementById("dvTable");
+            dvTable.innerHTML = "";
+            dvTable.appendChild(table);
+
+
+        }
+
+    </script>
 </head>
 
 <body>
@@ -21,27 +55,33 @@
 
 <p>Define New Grant Conditions</p>
 
-<form action="DefineNewGrantConditionPage.jsp" method="get">
-    <table>
-    <input type="text" value="Condition Name" name="conditionName"
+<form id="form" action="/DefineNewGrantConditionServlet" method="post">
+    <input type="text" value="Condition Name" name="conditionName" id="conditionName"
            onfocus="if(this.value == 'Condition Name') { this.value = ''; }">
-         name : <%= request.getParameter("name")%>
+    <input type="hidden" name="conditionName">
     <br>
-    <input type="text" value="Minimum Time" name="minTime"
-           onfocus="if(this.value == 'Minimum Time') { this.value = ''; }">
+    <input type="text" value="Minimum Duration" name="minDuration" id="minDuration"
+           onfocus="if(this.value == 'Minimum Duration') { this.value = ''; }">
+    <input type="hidden" name="minDuration">
     <br>
-    <input type="text" value="Maximum Time" name="maxTime"
-           onfocus="if(this.value == 'Maximum Time') { this.value = ''; }">
+    <input type="text" value="Maximum Duration" name="maxDuration" id="maxDuration"
+           onfocus="if(this.value == 'Maximum Duration') { this.value = ''; }">
+    <input type="hidden" name="maxDuration">
     <br>
-    <input type="text" value="Minimum Amount" name="minAmount"
+    <input type="text" value="Minimum Amount" name="minAmount" id="minAmount"
            onfocus="if(this.value == 'Minimum Amount') { this.value = ''; }">
+    <input type="hidden" name="minAmount">
     <br>
-    <input type="text" value="Maximum Amount" name="maxAmount"
+    <input type="text" value="Maximum Amount" name="maxAmount" id="maxAmount"
            onfocus="if(this.value == 'Maximum Amount') { this.value = ''; }">
+    <input type="hidden" name="maxAmount">
     <br>
-    <input type="submit" value="Register">
-    </table>
+    <input type="submit" value="Final Submit"/>
+    <input type="button" value="Show All" onclick="generateTable()"/>
 </form>
+
+<div id="dvTable">
+</div>
 
 </body>
 </html>

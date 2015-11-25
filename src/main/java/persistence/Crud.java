@@ -8,6 +8,7 @@ import java.util.List;
 
 public class Crud {
     private static String loanTypeInsertionMsg;
+    private static String grantConditionInsertionMsg;
 
     public Crud() {
     }

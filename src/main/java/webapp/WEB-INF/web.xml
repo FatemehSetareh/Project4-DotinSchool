@@ -13,4 +13,13 @@
         <url-pattern>/DefineNewLoanTypeServlet</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>DefineNewGrantConditionServlet</servlet-name>
+        <servlet-class>presentation.DefineNewGrantConditionServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DefineNewGrantConditionServlet</servlet-name>
+        <url-pattern>/DefineNewGrantConditionServlet</url-pattern>
+    </servlet-mapping>
+
 </web-app>

@@ -3,40 +3,10 @@ package business;
 import persistence.Crud;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class Logic {
-    public static void checkNull(String name, String minTime, String maxTime, String minAmount, String maxAmount) {
-//        int counter = 0;
-//        if(name.equals("")){
-//            name = null;
-//            counter += 1;
-//        }
-//        if(minTime.equals("")){
-//            minTime = null;
-//            counter += 1;
-//        }
-//        if(maxTime.equals("")){
-//            maxTime = null;
-//            counter += 1;
-//        }
-//        if(minAmount.equals("")){
-//            minAmount = null;
-//            counter += 1;
-//        }
-//        if(maxAmount.equals("")){
-//            maxAmount = null;
-//            counter += 1;
-//        }
-//        if(name.equals(null) && minTime.equals(null) && maxTime.equals(null) && minAmount.equals(null) && maxAmount.equals(null)){
-//            //report that all condition is empty plz set one condition at least
-//        } else {
-        System.out.println("ghable crud");
-        GrantCondition grantCondition = new GrantCondition(name, minTime, maxTime, minAmount, maxAmount, null);
-        //Crud.insertToDatabase(grantCondition);
-        System.out.println("send to crud");
-
-        //}
-    }
+    public static String grantConditionStatus;
 
     public static void insertLoanTypeLogic(String typeName, String interestRate) throws SQLException {
         String errorMsg = "";
@@ -59,4 +29,43 @@ public class Logic {
             }
         }
     }
+
+    public static boolean insertGrantConditionLogic(String conditionName, String minDuration, String maxDuration, String minAmount, String maxAmount) {
+        String errorMsg = "";
+        ArrayList<GrantCondition> grantConditions = new ArrayList<GrantCondition>();
+        if (conditionName.equals("")) {
+            errorMsg += "Condition Name is already empty";
+        }
+        if (minDuration.equals("")) {
+            errorMsg += "Minimum Duration is already empty";
+        }
+        if (maxDuration.equals("")) {
+            errorMsg += "Maximum Duration is already empty";
+        }
+        if (minAmount.equals("")) {
+            errorMsg += "Minimum Amount is already empty";
+        }
+        if (maxAmount.equals("")) {
+            errorMsg += "Maximum Amount is already empty";
+        }
+        if (conditionName.equals("") || minDuration.equals("") || maxDuration.equals("") || minAmount.equals("") || maxAmount.equals("")) {
+            setGrantConditionStatus("Please Fill The Form Correctly " + errorMsg);
+            return false;
+        } else {
+            GrantCondition grantCondition = new GrantCondition(conditionName, minDuration, maxDuration, minAmount, maxAmount, null);
+            grantConditions.add(grantCondition);
+            //Crud.insertToDatabase(grantCondition);
+            System.out.println("send to crud");
+            return true;
+        }
+    }
+
+    public static String getGrantConditionStatus() {
+        return grantConditionStatus;
+    }
+
+    public static void setGrantConditionStatus(String grantConditionStatus) {
+        Logic.grantConditionStatus = grantConditionStatus;
+    }
 }
+
