@@ -18,7 +18,7 @@
 <p>Please choose one these options </p>
 
 <form>
-    <input type="button" value="Add A New Customer" onclick="location.href='RegisterRealCustomerPage.jsp';">
+    <input type="button" value="Add A New Customer" onclick="location.href='Project3-DotinSchool/src/main/webapp/WEB-INF/pages/RegisterRealCustomerPage.jsp';">
     <input type="button" value="Search For Existing Customer" onclick="location.href='SearchRealCustomerPage.html';">
     <input type="button" value="Define A New Loan Type" onclick="location.href='DefineNewLoanTypePage.jsp';">
     <input type="button" value="Define A New Loan File" onclick="location.href='DefineNewLoanFilePage.jsp';">

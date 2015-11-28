@@ -58,10 +58,10 @@ th {
     font-family: Tahoma, Geneva, sans-serif;
     font-weight: bold;
     text-align: center;
-    text-shadow: 2px 1px 2px #2E8B57	;
+    text-shadow: 2px 1px 2px #2E8B57;
     background-color: white;
     border-radius: 7px;
-    border-color:   green;
+    border-color: green;
 }
 
 #menu ul {
@@ -84,4 +84,15 @@ th {
 #menu a:hover {
     color: green;
     background-color: #FFF;
+}
+
+#select {
+    background: transparent;
+    width: 268px;
+    padding: 3px;
+    font-size: 11px;
+    line-height: 1;
+    border: 2px;
+    border-radius: 2px;
+    height: 34px;
 }

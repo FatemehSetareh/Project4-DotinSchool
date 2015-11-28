@@ -8,9 +8,9 @@
         <id name="typeName" type="string" column="typeName">
         </id>
         <property name="interestRate" column="interestRate" type="string"/>
-            <!--<bag name="grantConditions" cascade="all">-->
-                <!--<key column="typeName"/>-->
-                <!--<one-to-many class="business.GrantCondition"/>-->
+        <!--<bag name="grantConditions" cascade="all">-->
+        <!--<key column="typeName"/>-->
+        <!--<one-to-many class="business.GrantCondition"/>-->
         <!--</bag>-->
         <set name="grantConditions" cascade="all">
             <key column="typeName"/>
@@ -39,5 +39,16 @@
         <property name="typeName" column="typeName" type="string"/>
         <property name="duration" column="duration" type="string"/>
         <property name="amount" column="amount" type="string"/>
+    </class>
+
+    <class name="business.RealCustomer" table="realCustomer">
+        <id name="customerNumber" type="int" column="customerNumber">
+            <generator class="native"/>
+        </id>
+        <property name="firstName" column="firstName" type="string"/>
+        <property name="lastName" column="lastName" type="string"/>
+        <property name="fatherName" column="fatherName" type="string"/>
+        <property name="nationalCode" column="nationalCode" type="int"/>
+        <property name="birthDate" column="birthDate" type="string"/>
     </class>
 </hibernate-mapping>

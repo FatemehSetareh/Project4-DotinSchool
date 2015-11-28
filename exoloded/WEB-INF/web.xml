@@ -22,4 +22,22 @@
         <url-pattern>/DefineNewGrantConditionServlet</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>DefineNewLoanFileServlet</servlet-name>
+        <servlet-class>presentation.DefineNewLoanFileServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DefineNewLoanFileServlet</servlet-name>
+        <url-pattern>/DefineNewLoanFileServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>RegisterRealCustomerServlet</servlet-name>
+        <servlet-class>presentation.RegisterRealCustomerServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RegisterRealCustomerServlet</servlet-name>
+        <url-pattern>/RegisterRealCustomerServlet</url-pattern>
+    </servlet-mapping>
+
 </web-app>

@@ -3,10 +3,41 @@ package business;
 import persistence.Crud;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 public class Logic {
-    public static String grantConditionStatus;
+
+    public static String insertRealCustomerLogic(String firstName, String lastName, String fatherName, Integer nationalCode, String birthDate) {
+        String errorMsg = "";
+        if (firstName.equals("")) {
+            firstName = null;
+            errorMsg += "First Name Field Is Empty" + "<br>";
+        }
+        if (lastName.equals("")) {
+            lastName = null;
+            errorMsg += "Last Name Field Is Empty" + "<br>";
+        }
+        if (fatherName.equals("")) {
+            fatherName = null;
+            errorMsg += "Father Name Field Is Empty" + "<br>";
+        }
+        if (nationalCode.equals("")) {
+            nationalCode = null;
+            errorMsg += "National Code Field Is Empty" + "<br>";
+        }
+        if (birthDate.equals("")) {
+            birthDate = null;
+            errorMsg += "Birth Date Field Is Empty" + "<br>";
+        }
+        if (firstName != null && lastName != null && fatherName != null && nationalCode != null && birthDate != null) {
+            if (Crud.realCustomerCheckExistence(nationalCode)) {
+                RealCustomer realCustomer = new RealCustomer(firstName, lastName, fatherName, nationalCode, birthDate, null);
+                return Crud.insertRealCustomerToDatabase(realCustomer);
+            } else return errorMsg += "This National Code Registered Before";
+
+        } else {
+            return errorMsg;
+        }
+    }
 
     public static void insertLoanTypeLogic(String typeName, String interestRate) throws SQLException {
         String errorMsg = "";
@@ -30,9 +61,11 @@ public class Logic {
         }
     }
 
-    public static boolean insertGrantConditionLogic(String conditionName, String minDuration, String maxDuration, String minAmount, String maxAmount) {
+    public static String insertGrantConditionLogic(String typeName, String conditionName, String minDuration, String maxDuration, String minAmount, String maxAmount) {
         String errorMsg = "";
-        ArrayList<GrantCondition> grantConditions = new ArrayList<GrantCondition>();
+        if (typeName.equals("")) {
+            errorMsg += "Type Name is already empty";
+        }
         if (conditionName.equals("")) {
             errorMsg += "Condition Name is already empty";
         }
@@ -48,24 +81,23 @@ public class Logic {
         if (maxAmount.equals("")) {
             errorMsg += "Maximum Amount is already empty";
         }
-        if (conditionName.equals("") || minDuration.equals("") || maxDuration.equals("") || minAmount.equals("") || maxAmount.equals("")) {
-            setGrantConditionStatus("Please Fill The Form Correctly " + errorMsg);
-            return false;
+        if (typeName.equals("") || conditionName.equals("") || minDuration.equals("") || maxDuration.equals("") || minAmount.equals("") || maxAmount.equals("")) {
+            return ("Please Fill The Form Correctly " + errorMsg);
         } else {
-            GrantCondition grantCondition = new GrantCondition(conditionName, minDuration, maxDuration, minAmount, maxAmount, null);
-            grantConditions.add(grantCondition);
-            //Crud.insertToDatabase(grantCondition);
-            System.out.println("send to crud");
-            return true;
+            GrantCondition grantCondition = new GrantCondition(typeName, conditionName, minDuration, maxDuration, minAmount, maxAmount, null);
+            Crud.insertGrantConditionToDatabase(grantCondition);
+            return "ok";
         }
     }
 
-    public static String getGrantConditionStatus() {
-        return grantConditionStatus;
+    public static String searchCustomerNumberLogic(String customerNumber) {
+        System.out.println("avvale logic");
+        if (customerNumber.equals("")) {
+            return "Please Enter Customer Number, This Field Can Not Be Empty.";
+        }
+        return Crud.searchCustomerNumber(Integer.valueOf(customerNumber));
     }
 
-    public static void setGrantConditionStatus(String grantConditionStatus) {
-        Logic.grantConditionStatus = grantConditionStatus;
-    }
 }
+
 
