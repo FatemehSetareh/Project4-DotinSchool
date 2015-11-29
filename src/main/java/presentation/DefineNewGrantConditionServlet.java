@@ -1,6 +1,5 @@
 package presentation;
 
-import business.GrantCondition;
 import business.Logic;
 
 import javax.servlet.ServletException;
@@ -9,27 +8,38 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
+import java.util.Enumeration;
 
 public class DefineNewGrantConditionServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
-        ArrayList<GrantCondition> grantConditions = new ArrayList<GrantCondition>();
+        String typeName = request.getParameter("typeName");
+        System.out.println(typeName);
 
-        int counter = Integer.parseInt(request.getParameter("counter"));
-        while (counter != 0) {
-            for (int j = 0; j < 5; j++) {
-                String conditionName = request.getParameter("grant" + counter);
-                String minDuration = request.getParameter("grant" + counter);
-                String maxDuration = request.getParameter("grant" + counter);
-                String minAmount = request.getParameter("grant" + counter);
-                String maxAmount = request.getParameter("grant" + counter);
-                out.print(Logic.insertGrantConditionLogic("maskan", conditionName, minDuration, maxDuration, minAmount, maxAmount));
+        Enumeration<String> parameterNames = request.getParameterNames();
+        System.out.println(parameterNames);
+        while (parameterNames.hasMoreElements()) {
+            String paramName = parameterNames.nextElement();
+            String[] paramValues = request.getParameterValues(paramName);
+            System.out.println(paramValues);
+            for (int i = 0; i < paramValues.length; i++) {
+                String conditionName = paramValues[i];
+                System.out.println(conditionName);
+                String minDuration = paramValues[i += 1];
+                System.out.println(minDuration);
+                String maxDuration = paramValues[i += 2];
+                System.out.println(maxDuration);
+                String minAmount = paramValues[i += 3];
+                System.out.println(minAmount);
+                String maxAmount = paramValues[i += 4];
+                System.out.println(maxAmount);
+                Logic.insertGrantConditionLogic(typeName, conditionName, minDuration, maxDuration, minAmount, maxAmount);
             }
-
         }
     }
 }
+
+
 

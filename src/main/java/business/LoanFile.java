@@ -7,6 +7,17 @@ public class LoanFile {
     private String amount;
     private String loanFileId;
 
+    public LoanFile(Integer customerNumber, String typeName, String duration, String amount, String loanFileId) {
+        this.customerNumber = customerNumber;
+        this.typeName = typeName;
+        this.duration = duration;
+        this.amount = amount;
+        this.loanFileId = loanFileId;
+    }
+
+    public LoanFile() {
+    }
+
     public Integer getCustomerNumber() {
         return customerNumber;
     }

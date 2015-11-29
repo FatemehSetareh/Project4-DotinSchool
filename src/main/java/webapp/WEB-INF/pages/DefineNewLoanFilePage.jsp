@@ -45,7 +45,7 @@
     <br>
     <input type="submit" value="Retrieve">
     <br>
-    <select>
+    <select name="typeName" id="typeName">
         <% for (int i = 0; i < data.size(); i++) { %>
         <option><%= data.get(i)%>
         </option>

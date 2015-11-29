@@ -2,11 +2,34 @@
 <head>
     <link rel="stylesheet" type="text/css" href="Theme.css" media="screen"/>
     <script>
+
         function validate() {
-            var value = document.getElementById('nationalCode').value;
-            if (value.toString().length < 10 || value.toString().length > 10) {
-                document.getElementById("error").innerHTML = "The Lenght Of NationalCode Is Not Correct";
+            var nationalCode = document.getElementById("nationalCode").value;
+            if (10 != nationalCode.toString().length) {
+                alert("Number of digits is not correct.");
+                return false;
             }
+            if (checkDigits(nationalCode) == false) {
+                alert("National Code is not correct!");
+                return false;
+            }
+            return true;
+        }
+        function checkDigits(nationalCode) {
+            var nationalCodeString = nationalCode.toString();
+            var sum = (parseInt(nationalCodeString.charAt(0)) * 1000000000)
+                    + (parseInt(nationalCodeString.charAt(1)) * 100000000)
+                    + (parseInt(nationalCodeString.charAt(2)) * 10000000)
+                    + (parseInt(nationalCodeString.charAt(3)) * 1000000)
+                    + (parseInt(nationalCodeString.charAt(4)) * 100000)
+                    + (parseInt(nationalCodeString.charAt(5)) * 10000)
+                    + (parseInt(nationalCodeString.charAt(6)) * 1000)
+                    + (parseInt(nationalCodeString.charAt(7)) * 100)
+                    + (parseInt(nationalCodeString.charAt(8)) * 10)
+                    + (parseInt(nationalCodeString.charAt(9)));
+            if (sum % 11 == parseInt(nationalCodeString.charAt(9))) {
+                return true;
+            } else return sum % 11 == (11 - parseInt(nationalCodeString.charAt(9)));
         }
     </script>
 </head>
@@ -19,7 +42,8 @@
 <p>Please Fill The Form And Click Submit Button </p>
 
 <div class="container">
-    <form action="/RegisterRealCustomerServlet" method="get" onsubmit="validate();">
+    <form action="/RegisterRealCustomerServlet" method="get"
+          onsubmit=" return validate()">
         <input type="text" name="firstName" onfocus="if(this.value == 'First Name') { this.value = ''; }"
                value="First Name" required>
         <br>

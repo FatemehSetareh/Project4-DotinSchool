@@ -32,14 +32,14 @@ public class Logic {
             if (Crud.realCustomerCheckExistence(nationalCode)) {
                 RealCustomer realCustomer = new RealCustomer(firstName, lastName, fatherName, nationalCode, birthDate, null);
                 return Crud.insertRealCustomerToDatabase(realCustomer);
-            } else return errorMsg += "This National Code Registered Before";
+            } else return "This National Code Registered Before";
 
         } else {
             return errorMsg;
         }
     }
 
-    public static void insertLoanTypeLogic(String typeName, String interestRate) throws SQLException {
+    public static String insertLoanTypeLogic(String typeName, String interestRate) throws SQLException {
         String errorMsg = "";
         if (typeName.equals("")) {
             errorMsg += "Type Name is already empty" + "<br>";
@@ -48,20 +48,20 @@ public class Logic {
             errorMsg += "Interest Rate is already empty";
         }
         if (typeName.equals("") || interestRate.equals("")) {
-            Crud.setLoanTypeInsertionMsg("All Fields Should Be filled " + "<br>" + errorMsg);
+            return ("All Fields Should Be filled " + "<br>" + errorMsg);
         } else {
             LoanType loanType = new LoanType();
             loanType.setTypeName(typeName);
             loanType.setInterestRate(interestRate);
             if (Crud.loanTypeCheckExistence(loanType)) {
-                Crud.insertLoanTypeToDatabase(loanType);
+                return Crud.insertLoanTypeToDatabase(loanType);
             } else {
-                Crud.setLoanTypeInsertionMsg("This Loan Type Is Registered Before.");
+                return ("This Loan Type Is Registered Before.");
             }
         }
     }
 
-    public static String insertGrantConditionLogic(String typeName, String conditionName, String minDuration, String maxDuration, String minAmount, String maxAmount) {
+    public static void insertGrantConditionLogic(String typeName, String conditionName, String minDuration, String maxDuration, String minAmount, String maxAmount) {
         String errorMsg = "";
         if (typeName.equals("")) {
             errorMsg += "Type Name is already empty";
@@ -82,22 +82,40 @@ public class Logic {
             errorMsg += "Maximum Amount is already empty";
         }
         if (typeName.equals("") || conditionName.equals("") || minDuration.equals("") || maxDuration.equals("") || minAmount.equals("") || maxAmount.equals("")) {
-            return ("Please Fill The Form Correctly " + errorMsg);
+            System.out.println("Please Fill The Form Correctly " + errorMsg);
         } else {
             GrantCondition grantCondition = new GrantCondition(typeName, conditionName, minDuration, maxDuration, minAmount, maxAmount, null);
             Crud.insertGrantConditionToDatabase(grantCondition);
-            return "ok";
         }
     }
 
     public static String searchCustomerNumberLogic(String customerNumber) {
-        System.out.println("avvale logic");
         if (customerNumber.equals("")) {
             return "Please Enter Customer Number, This Field Can Not Be Empty.";
         }
         return Crud.searchCustomerNumber(Integer.valueOf(customerNumber));
     }
 
+    public static String loanFileExistenceLogic(String typeName, String duration, String amount, String customerNumber) {
+        String errorMsg = "";
+        if (typeName.equals("")) {
+            errorMsg += "Please Select LoanType From Menu";
+        }
+        if (duration.equals("")) {
+            errorMsg += " Duration is already empty";
+        }
+        if (amount.equals("")) {
+            errorMsg += "Amount is already empty";
+        }
+        if (customerNumber.equals("")) {
+            errorMsg += "Customer Number is already empty";
+        }
+        if (typeName.equals("") || duration.equals("") || amount.equals("") || customerNumber.equals("")) {
+            return ("Please Fill The Form Correctly " + errorMsg);
+        } else {
+            return Crud.searchGrantCondition(Integer.valueOf(customerNumber), typeName, duration, amount);
+        }
+    }
 }
 
 

@@ -37,37 +37,36 @@
                     var cell = row.insertCell(-1);
 
                     cell.innerHTML = grantConditions[i][j];
+                    grant = document.createElement("input");
+                    grant.setAttribute("type", "hidden");
+                    grant.setAttribute("name", "grant" + i);
+                    grant.setAttribute("value", grantConditions[i][j]);
                 }
             }
             var dvTable = document.getElementById("dvTable");
             dvTable.innerHTML = "";
             dvTable.appendChild(table);
         }
-        var grant; // declared as a global variable out side the functions
-
-        function createPriceIdArray() {
-            var rows = document.getElementsByTagName("TR");
-            var i = 0;
-            var value = "";
-            while (i < rows.length) {
-                var j = 0;
-                while (j < 5) {
-                    value += rows[i].cells[j].innerHTML;
-                    j++;
-                }
-                grant = document.createElement("input");
-                grant.setAttribute("type", "hidden");
-                grant.setAttribute("name", "grant" + i);
-                grant.setAttribute("value", value);
-                document.getElementById("form1").appendChild(grant);
-                i++;
-            }
-            grant = document.createElement("input");
-            grant.setAttribute("type", "hidden");
-            grant.setAttribute("name", "counter");
-            grant.setAttribute("value", i);
-            document.getElementById("form1").appendChild(grant);
-        }
+        //        var grant; // declared as a global variable out side the functions
+        //
+        //        function createGrantConditionArray() {
+        //            var rows = document.getElementsByTagName("TR");
+        //            var i = 0;
+        //            var value = "";
+        //            while (i < rows.length) {
+        //                var j = 0;
+        //                while (j < 5) {
+        //                    value += rows[i].cells[j].innerHTML;
+        //                    j++;
+        //                }
+        //                grant = document.createElement("input");
+        //                grant.setAttribute("type", "hidden");
+        //                grant.setAttribute("name", "grant" + i);
+        //                grant.setAttribute("value", value);
+        //                document.getElementById("form1").appendChild(grant);
+        //                i++;
+        //            }
+        //        }
 
     </script>
 </head>
@@ -78,6 +77,9 @@
 <h3>Real Customer</h3>
 
 <p>Define New Grant Conditions</p>
+<%
+    String typeName = request.getParameter("typeName");
+%>
 
 <form id="form1" action="/DefineNewGrantConditionServlet" method="post">
     <input type="text" value="Condition Name" name="conditionName" id="conditionName"
@@ -100,6 +102,7 @@
            onfocus="if(this.value == 'Maximum Amount') { this.value = ''; }">
     <input type="hidden" name="maxAmount">
     <br>
+    <input type="hidden" name="typeName" value="<%=typeName%>">
     <input type="submit" value="Final Submit"/>
     <input type="button" value="Show All" onclick="generateTable()"/>
 
