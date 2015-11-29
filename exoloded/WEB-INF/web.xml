@@ -40,4 +40,13 @@
         <url-pattern>/RegisterRealCustomerServlet</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>SearchCustomerNumberServlet</servlet-name>
+        <servlet-class>presentation.SearchCustomerNumberServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SearchCustomerNumberServlet</servlet-name>
+        <url-pattern>/SearchCustomerNumberServlet</url-pattern>
+    </servlet-mapping>
+
 </web-app>

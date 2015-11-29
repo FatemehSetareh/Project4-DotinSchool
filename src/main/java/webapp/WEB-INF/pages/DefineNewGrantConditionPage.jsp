@@ -31,6 +31,7 @@
                 headerCell.innerHTML = grantConditions[0][i];
                 row.appendChild(headerCell);
             }
+            var grant;
             for (var i = 1; i < grantConditions.length; i++) {
                 row = table.insertRow(-1);
                 for (var j = 0; j < columnCount; j++) {
@@ -84,23 +85,18 @@
 <form id="form1" action="/DefineNewGrantConditionServlet" method="post">
     <input type="text" value="Condition Name" name="conditionName" id="conditionName"
            onfocus="if(this.value == 'Condition Name') { this.value = ''; }">
-    <input type="hidden" name="conditionName">
     <br>
     <input type="text" value="Minimum Duration" name="minDuration" id="minDuration"
            onfocus="if(this.value == 'Minimum Duration') { this.value = ''; }">
-    <input type="hidden" name="minDuration">
     <br>
     <input type="text" value="Maximum Duration" name="maxDuration" id="maxDuration"
            onfocus="if(this.value == 'Maximum Duration') { this.value = ''; }">
-    <input type="hidden" name="maxDuration">
     <br>
     <input type="text" value="Minimum Amount" name="minAmount" id="minAmount"
            onfocus="if(this.value == 'Minimum Amount') { this.value = ''; }">
-    <input type="hidden" name="minAmount">
     <br>
     <input type="text" value="Maximum Amount" name="maxAmount" id="maxAmount"
            onfocus="if(this.value == 'Maximum Amount') { this.value = ''; }">
-    <input type="hidden" name="maxAmount">
     <br>
     <input type="hidden" name="typeName" value="<%=typeName%>">
     <input type="submit" value="Final Submit"/>

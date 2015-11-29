@@ -19,8 +19,8 @@ public class DefineNewLoanFileServlet extends HttpServlet {
         String typeName = request.getParameter("typeName");
         String duration = request.getParameter("duration");
         String amount = request.getParameter("amount");
-        System.out.println(customerNumber + " " + typeName + " " + duration + " " + amount);
 
+        System.out.println(customerNumber + " " + typeName + " " + duration + " " + amount);
 
         out.print("<html>" +
                 "<head>" +
@@ -31,7 +31,7 @@ public class DefineNewLoanFileServlet extends HttpServlet {
                 "<body>" +
                 "<h1>Dotin Internet Bank</h1>" +
                 "<h3>Real Customer</h3>" +
-                "<h3>" + Logic.loanFileExistenceLogic(typeName, duration, amount, customerNumber) + "</h3>" +
+                "<h3>" + Logic.checkLoanFileExistenceLogic(typeName, duration, amount, customerNumber) + "</h3>" +
                 "</body>");
     }
 }

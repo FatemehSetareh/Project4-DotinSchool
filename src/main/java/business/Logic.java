@@ -96,7 +96,7 @@ public class Logic {
         return Crud.searchCustomerNumber(Integer.valueOf(customerNumber));
     }
 
-    public static String loanFileExistenceLogic(String typeName, String duration, String amount, String customerNumber) {
+    public static String checkLoanFileExistenceLogic(String typeName, String duration, String amount, String customerNumber) {
         String errorMsg = "";
         if (typeName.equals("")) {
             errorMsg += "Please Select LoanType From Menu";

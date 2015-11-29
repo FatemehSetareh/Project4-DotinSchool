@@ -44,9 +44,9 @@ public class Crud {
             SQLQuery query = session.createSQLQuery("SELECT * FROM realcustomer WHERE nationalCode= :nationalCode");
             query.setParameter("nationalCode", nationalCode);
             query.setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP);
-            List result = query.list();
+            List data = query.list();
             transaction.commit();
-            if (result.size() == 0) {
+            if (data.size() == 0) {
                 return true;
             } else {
                 return false;
@@ -156,6 +156,7 @@ public class Crud {
     }
 
     public static String searchGrantCondition(Integer customerNumber, String typeName, String duration, String amount) {
+        System.out.println(customerNumber + " " + typeName + " " + duration + " " + amount);
         int intDuration = Integer.parseInt(duration);
         int intAmount = Integer.parseInt(amount);
         Configuration configuration = new Configuration();
@@ -167,6 +168,7 @@ public class Crud {
         try {
             SQLQuery query = session.createSQLQuery("SELECT * FROM grantcondition WHERE typeName= :typeName");
             query.setParameter("typeName", typeName);
+            System.out.println(query);
             query.setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP);
             List<GrantCondition> result = query.list();
             if (result.size() == 0) {
