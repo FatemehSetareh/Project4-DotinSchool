@@ -1,6 +1,6 @@
 package presentation;
 
-import business.Logic;
+import business.logic.RealCustomerLogic;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -30,13 +30,13 @@ public class RegisterRealCustomerServlet extends HttpServlet {
         //**get output and show result to user
         out.print("<html>" +
                 "<head>" +
-                "<link rel=\"stylesheet\" type=\"text/css\" href=\"Theme.css\" media=\"screen\" />" +
+                "<link rel=\"stylesheet\" type=\"text/css\" href=\"theme.css\" media=\"screen\" />" +
                 "</head>" +
                 "" +
                 "<body>" +
                 "<h1>Dotin Internet Bank</h1>" +
                 "" +
-                "<h3>" + Logic.insertRealCustomerLogic(firstName, lastName, fatherName, nationalCode, birthDate) + "</h3>" +
+                "<h3>" + RealCustomerLogic.insertRealCustomerLogic(firstName, lastName, fatherName, nationalCode, birthDate) + "</h3>" +
                 "</body>" +
                 "</html>");
 

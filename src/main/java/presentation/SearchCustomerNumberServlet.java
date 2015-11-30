@@ -1,6 +1,6 @@
 package presentation;
 
-import business.Logic;
+import business.logic.RealCustomerLogic;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -15,6 +15,6 @@ public class SearchCustomerNumberServlet extends HttpServlet {
 
         String customerNumber = request.getParameter("customerNumber");
         System.out.println(customerNumber);
-        response.getWriter().write(Logic.searchCustomerNumberLogic(customerNumber));
+        response.getWriter().write(RealCustomerLogic.searchCustomerNumberLogic(customerNumber));
     }
 }

@@ -43,6 +43,7 @@
     <orderEntry type="library" name="hibernate-annotations:hibernate-annotations:3.3.0.GA" level="project" />
     <orderEntry type="library" name="org.hibernate:hibernate:3.2.1.ga" level="project" />
     <orderEntry type="library" name="org.hibernate:hibernate-core:3.3.0.GA" level="project" />
+    <orderEntry type="library" name="org.hibernate:com.springsource.org.hibernate:3.2.6.ga" level="project" />
   </component>
 </module>
 

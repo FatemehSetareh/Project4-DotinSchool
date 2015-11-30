@@ -1,6 +1,6 @@
 package presentation;
 
-import business.Logic;
+import business.logic.LoanFileLogic;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -24,14 +24,14 @@ public class DefineNewLoanFileServlet extends HttpServlet {
 
         out.print("<html>" +
                 "<head>" +
-                "    <link rel=\"stylesheet\" type=\"text/css\" href=\"Theme.css\" media=\"screen\"/>" +
+                "    <link rel=\"stylesheet\" type=\"text/css\" href=\"theme.css\" media=\"screen\"/>" +
                 "    <title></title>" +
                 "</head>" +
                 "" +
                 "<body>" +
                 "<h1>Dotin Internet Bank</h1>" +
                 "<h3>Real Customer</h3>" +
-                "<h3>" + Logic.checkLoanFileExistenceLogic(typeName, duration, amount, customerNumber) + "</h3>" +
+                "<h3>" + LoanFileLogic.checkLoanFileExistenceLogic(typeName, duration, amount, customerNumber) + "</h3>" +
                 "</body>");
     }
 }
