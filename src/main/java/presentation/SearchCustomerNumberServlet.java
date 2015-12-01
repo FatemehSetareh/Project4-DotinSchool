@@ -15,7 +15,8 @@ public class SearchCustomerNumberServlet extends HttpServlet {
 
         String customerNumber = request.getParameter("customerNumber");
         System.out.println(customerNumber);
-        RealCustomerLogic.searchCustomerNumberLogic(customerNumber);
-        response.sendRedirect("welcome-page.jsp");
+
+        request.setAttribute("customerProperties",  RealCustomerLogic.searchCustomerNumberLogic(customerNumber));
+        request.getRequestDispatcher("define-new-loan-file-page.jsp").forward(request, response);
     }
 }

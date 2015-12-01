@@ -52,6 +52,10 @@
         document.getElementsByName("concatedGrantConditions")[0].value = allGrantConditions;
         document.forms[0].submit();
     }
+
+    function goBack() {
+        window.history.back();
+    }
 </script>
 <head>
     <link rel="stylesheet" type="text/css" href="theme.css" media="screen"/>
@@ -60,13 +64,23 @@
 <body>
 <h1>Dotin Internet Bank</h1>
 
-
-<p>Define New Grant Conditions</p>
 <%
     String typeName = request.getParameter("typeName");
     String interestRate = request.getParameter("interestRate");
-%>
 
+    String output = (String) request.getAttribute("output");
+    if (output != null) {
+%>
+<h3><%= output %>
+</h3>
+<%
+} else {
+%>
+<%= ""%>
+<%
+    }
+%>
+<p>Define New Grant Conditions</p>
 
 <form id="form1" action="/DefineNewGrantConditionServlet" method="post">
     <input type="hidden" name="concatedGrantConditions"/>
@@ -89,10 +103,11 @@
     <input type="hidden" name="interestRate" value="<%=interestRate%>">
     <input type="button" value="Final Submit" onclick="generateGrantConditionArray()"/>
     <input type="button" value="Show All" onclick="generateTable()"/>
+    <input type="button" value="Cancel" onClick="goBack()"/>
+
     <div id="table">
     </div>
 </form>
-
 
 </body>
 </html>

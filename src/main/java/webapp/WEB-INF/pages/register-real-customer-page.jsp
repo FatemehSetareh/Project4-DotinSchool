@@ -1,12 +1,57 @@
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="theme.css" media="screen"/>
+    <script>
+
+        function validate() {
+            var nationalCode = document.getElementById("nationalCode").value;
+            if (10 != nationalCode.toString().length) {
+                alert("Number of digits is not correct.");
+                return false;
+            }
+            if (checkDigits(nationalCode) == false) {
+                alert("National Code is not correct!");
+                return false;
+            }
+            return true;
+        }
+        function checkDigits(nationalCode) {
+            var nationalCodeString = nationalCode.toString();
+            var sum = (parseInt(nationalCodeString.charAt(0)) * 1000000000)
+                    + (parseInt(nationalCodeString.charAt(1)) * 100000000)
+                    + (parseInt(nationalCodeString.charAt(2)) * 10000000)
+                    + (parseInt(nationalCodeString.charAt(3)) * 1000000)
+                    + (parseInt(nationalCodeString.charAt(4)) * 100000)
+                    + (parseInt(nationalCodeString.charAt(5)) * 10000)
+                    + (parseInt(nationalCodeString.charAt(6)) * 1000)
+                    + (parseInt(nationalCodeString.charAt(7)) * 100)
+                    + (parseInt(nationalCodeString.charAt(8)) * 10)
+                    + (parseInt(nationalCodeString.charAt(9)));
+            if (sum % 11 == parseInt(nationalCodeString.charAt(9))) {
+                return true;
+            } else return sum % 11 == (11 - parseInt(nationalCodeString.charAt(9)));
+        }
+    </script>
 </head>
 
 <body>
 <h1>Dotin Internet Bank</h1>
 
 <h3>Add A New Real Customer</h3>
+
+<%
+    String output = (String) request.getAttribute("output");
+    if (output != null) {
+%>
+<h3><%= output %>
+</h3>
+<%
+} else {
+%>
+<%= ""%>
+<%
+    }
+%>
 
 <p>Please Fill The Form And Click Submit Button </p>
 
@@ -34,36 +79,5 @@
     </form>
 </div>
 
-<script>
-
-    function validate() {
-        var nationalCode = document.getElementById("nationalCode").value;
-        if (10 != nationalCode.toString().length) {
-            alert("Number of digits is not correct.");
-            return false;
-        }
-        if (checkDigits(nationalCode) == false) {
-            alert("National Code is not correct!");
-            return false;
-        }
-        return true;
-    }
-    function checkDigits(nationalCode) {
-        var nationalCodeString = nationalCode.toString();
-        var sum = (parseInt(nationalCodeString.charAt(0)) * 1000000000)
-                + (parseInt(nationalCodeString.charAt(1)) * 100000000)
-                + (parseInt(nationalCodeString.charAt(2)) * 10000000)
-                + (parseInt(nationalCodeString.charAt(3)) * 1000000)
-                + (parseInt(nationalCodeString.charAt(4)) * 100000)
-                + (parseInt(nationalCodeString.charAt(5)) * 10000)
-                + (parseInt(nationalCodeString.charAt(6)) * 1000)
-                + (parseInt(nationalCodeString.charAt(7)) * 100)
-                + (parseInt(nationalCodeString.charAt(8)) * 10)
-                + (parseInt(nationalCodeString.charAt(9)));
-        if (sum % 11 == parseInt(nationalCodeString.charAt(9))) {
-            return true;
-        } else return sum % 11 == (11 - parseInt(nationalCodeString.charAt(9)));
-    }
-</script>
 </body>
 </html>

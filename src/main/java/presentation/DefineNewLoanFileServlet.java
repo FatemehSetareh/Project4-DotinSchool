@@ -15,23 +15,14 @@ public class DefineNewLoanFileServlet extends HttpServlet {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
 
-        String customerNumber = request.getParameter("customerNumber");
+        String customerNumber = request.getParameter("customerNumber1");
         String typeName = request.getParameter("typeName");
         String duration = request.getParameter("duration");
         String amount = request.getParameter("amount");
 
         System.out.println(customerNumber + " " + typeName + " " + duration + " " + amount);
 
-        out.print("<html>" +
-                "<head>" +
-                "    <link rel=\"stylesheet\" type=\"text/css\" href=\"theme.css\" media=\"screen\"/>" +
-                "    <title></title>" +
-                "</head>" +
-                "" +
-                "<body>" +
-                "<h1>Dotin Internet Bank</h1>" +
-                "<h3>Real Customer</h3>" +
-                "<h3>" + LoanFileLogic.checkLoanFileExistenceLogic(typeName, duration, amount, customerNumber) + "</h3>" +
-                "</body>");
+        request.setAttribute("output", LoanFileLogic.checkLoanFileExistenceLogic(typeName, duration, amount, customerNumber));
+        request.getRequestDispatcher("define-new-loan-file-page.jsp").forward(request, response);
     }
 }

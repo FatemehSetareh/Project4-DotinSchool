@@ -21,11 +21,14 @@ public class DefineNewGrantConditionServlet extends HttpServlet {
 
         String concatedGrantConditions = request.getParameter("concatedGrantConditions");
         System.out.println(concatedGrantConditions);
+
         try {
-            out.print(LoanFileLogic.insertGrantConditionLogic(concatedGrantConditions, typeName, interestRate));
+            request.setAttribute("output", LoanFileLogic.insertGrantConditionLogic(concatedGrantConditions, typeName, interestRate));
+            request.getRequestDispatcher("define-new-grant-condition-page.jsp").forward(request, response);
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
 
 
     }

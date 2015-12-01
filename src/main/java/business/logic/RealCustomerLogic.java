@@ -39,7 +39,7 @@ public class RealCustomerLogic {
 
     public static String searchCustomerNumberLogic(String customerNumber) {
         if (customerNumber.equals("")) {
-            return "Please Enter Customer Number, This Field Can Not Be Empty.";
+            return "Please Enter Customer Number This Field Can Not Be Empty.";
         }
         return RealCustomerCRUD.searchCustomerNumber(Integer.valueOf(customerNumber));
     }

@@ -24,21 +24,9 @@ public class RegisterRealCustomerServlet extends HttpServlet {
         Integer nationalCode = Integer.valueOf(request.getParameter("nationalCode"));
         String birthDate = request.getParameter("birthDate");
 
-
-        //**send data to logic layer
-
         //**get output and show result to user
-        out.print("<html>" +
-                "<head>" +
-                "<link rel=\"stylesheet\" type=\"text/css\" href=\"theme.css\" media=\"screen\" />" +
-                "</head>" +
-                "" +
-                "<body>" +
-                "<h1>Dotin Internet Bank</h1>" +
-                "" +
-                "<h3>" + RealCustomerLogic.insertRealCustomerLogic(firstName, lastName, fatherName, nationalCode, birthDate) + "</h3>" +
-                "</body>" +
-                "</html>");
+        request.setAttribute("output", RealCustomerLogic.insertRealCustomerLogic(firstName, lastName, fatherName, nationalCode, birthDate));
+        request.getRequestDispatcher("/register-real-customer-page.jsp").forward(request, response);
 
 
     }

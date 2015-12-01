@@ -62,17 +62,20 @@ public class RealCustomerCRUD {
 
         SessionFactory sessionFactory = configuration.buildSessionFactory();
         Session session = sessionFactory.openSession();
-        Transaction transaction = session.beginTransaction();
+        Transaction transaction = null;
         try {
-            SQLQuery query = session.createSQLQuery("SELECT firstName,lastName FROM realcustomer WHERE customerNumber= :customerNumber");
+            transaction = session.beginTransaction();
+            Query query = session.createQuery("FROM business.RealCustomer WHERE customerNumber= :customerNumber");
             query.setParameter("customerNumber", customerNumber);
-            query.setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP);
             List result = query.list();
 
             if (result.size() == 0) {
                 return "This Customer Number Is Not In Our Database.";
             } else {
-                return result.get(0).toString();
+                for (Object aResult : result) {
+                    RealCustomer realCustomer = (RealCustomer) aResult;
+                    return realCustomer.getFirstName() + "," + realCustomer.getLastName() + "," + customerNumber.toString();
+                }
             }
         } catch (HibernateException e) {
             if (transaction != null) transaction.rollback();
