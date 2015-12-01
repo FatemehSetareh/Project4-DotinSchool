@@ -5,9 +5,9 @@ public class LoanFile {
     private String typeName;
     private String duration;
     private String amount;
-    private String loanFileId;
+    private Integer loanFileId;
 
-    public LoanFile(Integer customerNumber, String typeName, String duration, String amount, String loanFileId) {
+    public LoanFile(Integer customerNumber, String typeName, String duration, String amount, Integer loanFileId) {
         this.customerNumber = customerNumber;
         this.typeName = typeName;
         this.duration = duration;
@@ -50,11 +50,11 @@ public class LoanFile {
         this.amount = amount;
     }
 
-    public String getLoanFileId() {
+    public Integer getLoanFileId() {
         return loanFileId;
     }
 
-    public void setLoanFileId(String loanFileId) {
+    public void setLoanFileId(Integer loanFileId) {
         this.loanFileId = loanFileId;
     }
 }

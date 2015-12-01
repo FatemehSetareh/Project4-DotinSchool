@@ -65,26 +65,25 @@
 <%
     String typeName = request.getParameter("typeName");
     String interestRate = request.getParameter("interestRate");
-    System.out.println(typeName + " " + interestRate);
 %>
 
 
 <form id="form1" action="/DefineNewGrantConditionServlet" method="post">
     <input type="hidden" name="concatedGrantConditions"/>
     <input type="text" value="Condition Name" name="conditionName" id="conditionName"
-           onfocus="if(this.value == 'Condition Name') { this.value = ''; }">
+           onfocus="if(this.value == 'Condition Name') { this.value = ''; }" required>
     <br>
     <input type="text" value="Minimum Duration" name="minDuration" id="minDuration"
-           onfocus="if(this.value == 'Minimum Duration') { this.value = ''; }">
+           onfocus="if(this.value == 'Minimum Duration') { this.value = ''; }" required>
     <br>
     <input type="text" value="Maximum Duration" name="maxDuration" id="maxDuration"
-           onfocus="if(this.value == 'Maximum Duration') { this.value = ''; }">
+           onfocus="if(this.value == 'Maximum Duration') { this.value = ''; }" required>
     <br>
     <input type="text" value="Minimum Amount" name="minAmount" id="minAmount"
-           onfocus="if(this.value == 'Minimum Amount') { this.value = ''; }">
+           onfocus="if(this.value == 'Minimum Amount') { this.value = ''; }" required>
     <br>
     <input type="text" value="Maximum Amount" name="maxAmount" id="maxAmount"
-           onfocus="if(this.value == 'Maximum Amount') { this.value = ''; }">
+           onfocus="if(this.value == 'Maximum Amount') { this.value = ''; }" required>
     <br>
     <input type="hidden" name="typeName" value="<%=typeName%>">
     <input type="hidden" name="interestRate" value="<%=interestRate%>">

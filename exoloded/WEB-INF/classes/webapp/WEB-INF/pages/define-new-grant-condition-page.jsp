@@ -70,25 +70,31 @@
 
 <form id="form1" action="/DefineNewGrantConditionServlet" method="post">
     <input type="hidden" name="concatedGrantConditions"/>
-    <input type="text" value="Condition Name" name="conditionName" id="conditionName"
-           onfocus="if(this.value == 'Condition Name') { this.value = ''; }" required>
+    <label for="conditionName">Condition Name</label>
     <br>
-    <input type="text" value="Minimum Duration" name="minDuration" id="minDuration"
-           onfocus="if(this.value == 'Minimum Duration') { this.value = ''; }" required>
+    <input type="text" name="conditionName" id="conditionName" required/>
     <br>
-    <input type="text" value="Maximum Duration" name="maxDuration" id="maxDuration"
-           onfocus="if(this.value == 'Maximum Duration') { this.value = ''; }" required>
+    <label for="minDuration">Minimum Duration</label>
     <br>
-    <input type="text" value="Minimum Amount" name="minAmount" id="minAmount"
-           onfocus="if(this.value == 'Minimum Amount') { this.value = ''; }" required>
+    <input type="text" name="minDuration" id="minDuration" required/>
     <br>
-    <input type="text" value="Maximum Amount" name="maxAmount" id="maxAmount"
-           onfocus="if(this.value == 'Maximum Amount') { this.value = ''; }" required>
+    <label for="maxDuration">Maximum Duration</label>
+    <br>
+    <input type="text" name="maxDuration" id="maxDuration" required/>
+    <br>
+    <label for="minAmount">Minimum Amount</label>
+    <br>
+    <input type="text" name="minAmount" id="minAmount" required/>
+    <br>
+    <label for="maxAmount">Maximum Amount</label>
+    <br>
+    <input type="text" name="maxAmount" id="maxAmount" required/>
     <br>
     <input type="hidden" name="typeName" value="<%=typeName%>">
     <input type="hidden" name="interestRate" value="<%=interestRate%>">
     <input type="button" value="Final Submit" onclick="generateGrantConditionArray()"/>
     <input type="button" value="Show All" onclick="generateTable()"/>
+
     <div id="table">
     </div>
 </form>

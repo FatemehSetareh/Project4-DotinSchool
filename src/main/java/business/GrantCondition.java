@@ -9,11 +9,11 @@ public class GrantCondition {
     private String maxAmount;
     private Integer grantConditionId;
 
-    public GrantCondition(String typeName, String conditionName, String minTime, String maxTime, String minAmount, String maxAmount, Integer grantConditionId) {
+    public GrantCondition(String typeName, String conditionName, String minDuration, String maxDuration, String minAmount, String maxAmount, Integer grantConditionId) {
         this.typeName = typeName;
         this.conditionName = conditionName;
-        this.minDuration = minTime;
-        this.maxDuration = maxTime;
+        this.minDuration = minDuration;
+        this.maxDuration = maxDuration;
         this.minAmount = minAmount;
         this.maxAmount = maxAmount;
         this.grantConditionId = grantConditionId;

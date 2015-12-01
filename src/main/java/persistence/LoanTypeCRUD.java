@@ -49,4 +49,23 @@ public class LoanTypeCRUD {
         }
         return false;
     }
+
+    public static List searchDefinedLoanType() {
+        Session session = null;
+        List result;
+        Configuration configuration = new Configuration();
+        configuration.configure("hibernate.cfg.xml");
+        try {
+            SessionFactory sessionFactory = configuration.buildSessionFactory();
+            session = sessionFactory.openSession();
+
+            SQLQuery query = session.createSQLQuery("SELECT typeName FROM loantype ");
+            result = query.list();
+            return result;
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+        }
+    }
 }

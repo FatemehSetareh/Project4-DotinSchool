@@ -15,6 +15,7 @@ public class SearchCustomerNumberServlet extends HttpServlet {
 
         String customerNumber = request.getParameter("customerNumber");
         System.out.println(customerNumber);
-        response.getWriter().write(RealCustomerLogic.searchCustomerNumberLogic(customerNumber));
+        RealCustomerLogic.searchCustomerNumberLogic(customerNumber);
+        response.sendRedirect("welcome-page.jsp");
     }
 }
