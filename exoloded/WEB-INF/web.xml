@@ -5,15 +5,6 @@
          version="3.1">
 
     <servlet>
-        <servlet-name>DefineNewLoanTypeServlet</servlet-name>
-        <servlet-class>presentation.DefineNewLoanTypeServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>DefineNewLoanTypeServlet</servlet-name>
-        <url-pattern>/DefineNewLoanTypeServlet</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
         <servlet-name>DefineNewGrantConditionServlet</servlet-name>
         <servlet-class>presentation.DefineNewGrantConditionServlet</servlet-class>
     </servlet>

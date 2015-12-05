@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class LoanFileLogic {
-    public static String checkLoanFileExistenceLogic(String typeName, String duration, String amount, String customerNumber) {
+    public static String insertNewLoanFileLogic(String typeName, String duration, String amount, String customerNumber) {
         String errorMsg = "";
         if (typeName.equals("")) {
             errorMsg += "Please Select LoanType From Menu";

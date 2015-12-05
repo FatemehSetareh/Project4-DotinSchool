@@ -22,7 +22,7 @@ public class DefineNewLoanFileServlet extends HttpServlet {
 
         System.out.println(customerNumber + " " + typeName + " " + duration + " " + amount);
 
-        request.setAttribute("output", LoanFileLogic.checkLoanFileExistenceLogic(typeName, duration, amount, customerNumber));
+        request.setAttribute("output", LoanFileLogic.insertNewLoanFileLogic(typeName, duration, amount, customerNumber));
         request.getRequestDispatcher("define-new-loan-file-page.jsp").forward(request, response);
     }
 }

@@ -70,7 +70,8 @@ public class RealCustomerCRUD {
             List result = query.list();
 
             if (result.size() == 0) {
-                return "This Customer Number Is Not In Our Database.";
+                //This Customer Number Is Not In Our Database.
+                return "is not here";
             } else {
                 for (Object aResult : result) {
                     RealCustomer realCustomer = (RealCustomer) aResult;

@@ -7,6 +7,7 @@ import org.hibernate.cfg.Configuration;
 import java.util.List;
 
 public class LoanTypeCRUD {
+
     public static String insertLoanTypeToDatabase(LoanType loanType) {
         Configuration configuration = new Configuration();
         configuration.configure("hibernate.cfg.xml");
@@ -50,7 +51,7 @@ public class LoanTypeCRUD {
         return false;
     }
 
-    public static List searchDefinedLoanType() {
+    public static List searchDefinedLoanTypes() {
         Session session = null;
         List result;
         Configuration configuration = new Configuration();

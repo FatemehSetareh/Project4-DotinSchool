@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.util.List" %>
 <%@ page import="presentation.SearchForDefinedLoanTypeServlet" %>
+<%@ page import="java.util.ArrayList" %>
 
 <html>
 <head>
@@ -31,8 +32,9 @@
     String customerProperties = (String) request.getAttribute("customerProperties");
     String customerNumber = "";
     if (customerProperties != null) {
-        String[] splitCustomerProperties = customerProperties.split(",");
-        if (splitCustomerProperties[0] != null) {
+        if (!customerProperties.equals("is not here")) {
+            String[] splitCustomerProperties = customerProperties.split(",");
+            if (splitCustomerProperties[0] != null) {
 %><b>Fist Name: <%=splitCustomerProperties[0]%>
 </b>
 <% }
@@ -43,7 +45,10 @@
     if (splitCustomerProperties[2] != null) {
         customerNumber = splitCustomerProperties[2];
     }
-}
+} else {
+%> <b>This Customer Number Is Not In Our Database.</b> <%
+        }
+    }
 %>
 
 <p>Add A New Loan File </p>

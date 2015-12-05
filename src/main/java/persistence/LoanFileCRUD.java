@@ -2,13 +2,24 @@ package persistence;
 
 import business.GrantCondition;
 import business.LoanFile;
-import org.hibernate.*;
+import org.apache.log4j.Logger;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class LoanFileCRUD {
+    static Logger logger;
+
+    public LoanFileCRUD() {
+       // PropertyConfigurator.configure("log4j.properties");
+        logger = Logger.getLogger(LoanFileCRUD.class.getName());
+    }
+
     public static String insertGrantConditionToDatabase(ArrayList<GrantCondition> grantConditionObjectsArray) {
         Configuration configuration = new Configuration();
         configuration.configure("hibernate.cfg.xml");
@@ -64,9 +75,11 @@ public class LoanFileCRUD {
 
                     if (minDuration <= intDuration && intDuration <= maxDuration && minAmount <= intAmount && intAmount <= maxAmount) {
                         LoanFile loanFile = new LoanFile(customerNumber, typeName, duration, amount, null);
+                        //logger.info("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Matched with this grant condition.");
                         return insertLoanFileToDatabase(loanFile);
                     }
                 }
+                logger.error("Does Not Match With Any Condition.");
                 return "This Amount and Duration Are not Compatible With Any Condition Registered For Type Name: " + typeName + ".";
             }
         } finally {
@@ -84,6 +97,7 @@ public class LoanFileCRUD {
             Transaction transaction = session.beginTransaction();
             session.persist(loanFile);
             transaction.commit();
+            //logger.info("Inserted to db");
             return "Loan File Registered Successfully For This Customer" + loanFile.getCustomerNumber();
         } finally {
             session.close();

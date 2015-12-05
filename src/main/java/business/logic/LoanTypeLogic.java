@@ -30,6 +30,6 @@ public class LoanTypeLogic {
     }
 
     public static List searchDefinedLoanTypeLogic(){
-       return LoanTypeCRUD.searchDefinedLoanType();
+       return LoanTypeCRUD.searchDefinedLoanTypes();
     }
 }
